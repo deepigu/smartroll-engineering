@@ -1,0 +1,434 @@
+
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #18263b;
+  background: #f4f7fb;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 258px;
+  min-width: 258px;
+  min-height: 100vh;
+  background: #101e32;
+  color: #fff;
+  padding: 26px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 10px 30px;
+}
+
+.brand-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  background: #2769e8;
+  border-radius: 12px;
+  font-size: 25px;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 22px;
+  color: white;
+}
+
+.brand p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #a7b7ce;
+}
+
+.sidebar-label {
+  padding: 10px 15px;
+  color: #8194ae;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 15px;
+  background: transparent;
+  color: #b8c7da;
+  border: none;
+  border-radius: 9px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.nav-item:hover {
+  background: #20344f;
+  color: white;
+}
+
+.nav-item.active {
+  background: #2769e8;
+  color: white;
+  font-weight: 600;
+}
+
+.nav-icon {
+  font-size: 20px;
+  width: 23px;
+  text-align: center;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 18px 12px 0;
+  font-size: 12px;
+  color: #9eafc5;
+  border-top: 1px solid #2b3a50;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  background: #40d8a3;
+  border-radius: 50%;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 34px 42px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.topbar h1 {
+  margin: 5px 0 0;
+  font-size: 30px;
+  letter-spacing: -0.6px;
+}
+
+.eyebrow {
+  color: #71839d;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+
+.topbar-badge {
+  background: #e8efff;
+  color: #2857b7;
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.page-description {
+  color: #66768d;
+  margin-bottom: 25px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 22px 0 30px;
+}
+
+.card,
+.dashboard-card {
+  background: white;
+  padding: 23px;
+  border: 1px solid #e4eaf3;
+  border-radius: 13px;
+  box-shadow: 0 3px 12px rgba(23, 42, 74, 0.035);
+  min-width: 0;
+}
+
+.card h3,
+.dashboard-card h4 {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #687992;
+}
+
+.card h2,
+.dashboard-card p {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.card > p {
+  margin: 10px 0 0;
+  color: #8795a9;
+  font-size: 12px;
+}
+
+.connection-status {
+  font-size: 20px !important;
+  color: #16875b;
+}
+
+.overview-section,
+.orders-section,
+.recommendation-section {
+  background: white;
+  border: 1px solid #e4eaf3;
+  border-radius: 14px;
+  padding: 26px;
+  margin: 25px 0;
+  box-shadow: 0 3px 12px rgba(23, 42, 74, 0.035);
+}
+
+.overview-section h2,
+.orders-section h2,
+.recommendation-section h2 {
+  margin-top: 0;
+  font-size: 21px;
+}
+
+.overview-section > p,
+.recommendation-section > p {
+  color: #697b92;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 22px;
+}
+
+.tool-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: #f8faff;
+  border: 1px solid #e5ecf7;
+  border-radius: 11px;
+  padding: 22px 17px;
+  color: #203651;
+  min-height: 90px;
+}
+
+.tool-card:hover {
+  border-color: #2769e8;
+  background: #edf3ff;
+}
+
+.tool-icon {
+  color: #2769e8;
+  font-size: 23px;
+}
+
+.tool-card strong {
+  flex: 1;
+  font-size: 13px;
+}
+
+.tool-arrow {
+  color: #2769e8;
+  font-size: 20px;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.orders-table,
+.recommendation-section table,
+.orders-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+  font-size: 13px;
+}
+
+table th {
+  text-align: left;
+  background: #f0f4fa;
+  color: #526580;
+  padding: 13px;
+  font-weight: 700;
+}
+
+table td {
+  padding: 13px;
+  border-bottom: 1px solid #e8edf4;
+}
+
+table tbody tr:hover {
+  background: #f9fbff;
+}
+
+.recommendation-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 22px 0;
+}
+
+.recommendation-form > div {
+  min-width: 0;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #455875;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d5dfec;
+  border-radius: 8px;
+  background: white;
+  color: #20324d;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #b7ceff;
+  border-color: #2769e8;
+}
+
+form button,
+.recommendation-section button:not(.nav-item) {
+  background: #2769e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+form button:hover,
+.recommendation-section button:hover {
+  background: #1c56c4;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mobile-menu-button {
+  display: none;
+}
+
+@media (max-width: 1150px) {
+  .dashboard-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .sidebar {
+    position: fixed;
+    z-index: 20;
+    left: -270px;
+    top: 0;
+    bottom: 0;
+    transition: left 0.2s;
+  }
+
+  .sidebar.sidebar-open {
+    left: 0;
+  }
+
+  .main-content {
+    padding: 22px 16px;
+  }
+
+  .mobile-menu-button {
+    display: block;
+    border: 1px solid #dbe4f0;
+    background: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 20px;
+  }
+
+  .topbar h1 {
+    font-size: 24px;
+  }
+
+  .topbar-badge {
+    display: none;
+  }
+
+  .dashboard-cards,
+  .tool-grid,
+  .recommendation-form {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-section,
+  .orders-section,
+  .recommendation-section {
+    padding: 18px;
+  }
+}
