@@ -1,5 +1,17 @@
 ﻿
 import { useEffect, useState } from "react";
+import {
+  LayoutDashboard,
+  Layers,
+  Sparkles,
+  CircleGauge,
+  ClipboardList,
+  PackageCheck,
+  Settings,
+  Menu,
+  ArrowRight,
+} from "lucide-react";
+
 import OrderForm from "./OrderForm";
 import MaterialSelection from "./MaterialSelection";
 import MaterialRecommendation from "./MaterialRecommendation";
@@ -7,15 +19,16 @@ import CoilOptimizer from "./CoilOptimizer";
 import ProductionPlanner from "./ProductionPlanner";
 import "./App.css";
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+const API_BASE =
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 const menuItems = [
-  { id: "dashboard", label: "Dashboard", icon: "â–¦" },
-  { id: "materials", label: "Materials", icon: "â—ˆ" },
-  { id: "recommendations", label: "Recommendations", icon: "âœ¦" },
-  { id: "coils", label: "Coil Optimization", icon: "â—Ž" },
-  { id: "planning", label: "Production Planning", icon: "â–¤" },
-  { id: "orders", label: "Production Orders", icon: "â–£" },
+  { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { id: "materials", label: "Materials", icon: Layers },
+  { id: "recommendations", label: "Recommendations", icon: Sparkles },
+  { id: "coils", label: "Coil Optimization", icon: CircleGauge },
+  { id: "planning", label: "Production Planning", icon: ClipboardList },
+  { id: "orders", label: "Production Orders", icon: PackageCheck },
 ];
 
 function App() {
@@ -32,12 +45,12 @@ function App() {
         setLoading(true);
         setError("");
 
-        const response = await fetch(
-          `${API_BASE}/orders`
-        );
+        const response = await fetch(`${API_BASE}/orders`);
 
         if (!response.ok) {
-          throw new Error("Failed to fetch production orders");
+          throw new Error(
+            `Failed to fetch production orders (HTTP ${response.status})`
+          );
         }
 
         const data = await response.json();
@@ -128,7 +141,10 @@ function App() {
     <div className="app-layout">
       <aside className={`sidebar ${menuOpen ? "sidebar-open" : ""}`}>
         <div className="brand">
-          <div className="brand-icon">âš™</div>
+          <div className="brand-icon">
+            <Settings size={25} />
+          </div>
+
           <div>
             <h2>SmartRoll</h2>
             <p>Engineering Platform</p>
@@ -138,21 +154,27 @@ function App() {
         <div className="sidebar-label">WORKSPACE</div>
 
         <nav aria-label="Main navigation">
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              className={
-                activePage === item.id
-                  ? "nav-item active"
-                  : "nav-item"
-              }
-              onClick={() => navigate(item.id)}
-            >
-              <span className="nav-icon">{item.icon}</span>
-              <span>{item.label}</span>
-            </button>
-          ))}
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <button
+                key={item.id}
+                type="button"
+                className={
+                  activePage === item.id
+                    ? "nav-item active"
+                    : "nav-item"
+                }
+                onClick={() => navigate(item.id)}
+              >
+                <span className="nav-icon">
+                  <Icon size={19} strokeWidth={1.8} />
+                </span>
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
         </nav>
 
         <div className="sidebar-footer">
@@ -169,7 +191,7 @@ function App() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation"
           >
-            â˜°
+            <Menu size={23} />
           </button>
 
           <div>
@@ -234,18 +256,28 @@ function App() {
               <div className="tool-grid">
                 {menuItems
                   .filter((item) => item.id !== "dashboard")
-                  .map((item) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      className="tool-card"
-                      onClick={() => navigate(item.id)}
-                    >
-                      <span className="tool-icon">{item.icon}</span>
-                      <strong>{item.label}</strong>
-                      <span className="tool-arrow">â†’</span>
-                    </button>
-                  ))}
+                  .map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        className="tool-card"
+                        onClick={() => navigate(item.id)}
+                      >
+                        <span className="tool-icon">
+                          <Icon size={22} strokeWidth={1.8} />
+                        </span>
+
+                        <strong>{item.label}</strong>
+
+                        <span className="tool-arrow">
+                          <ArrowRight size={18} />
+                        </span>
+                      </button>
+                    );
+                  })}
               </div>
             </section>
 
@@ -280,5 +312,3 @@ function App() {
 }
 
 export default App;
-
-
