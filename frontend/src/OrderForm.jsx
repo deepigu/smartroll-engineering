@@ -1,5 +1,7 @@
-
+﻿
 import { useState } from "react";
+
+const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 function OrderForm({ onOrderCreated }) {
   const [orderId, setOrderId] = useState("");
@@ -19,7 +21,7 @@ async function handleSubmit(event) {
 
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/orders",
+      `${API_BASE}/orders`,
       {
         method: "POST",
         headers: {
@@ -146,3 +148,5 @@ onOrderCreated();
 }
 
 export default OrderForm;
+
+

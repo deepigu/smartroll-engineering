@@ -1,5 +1,7 @@
-
+﻿
 import { useEffect, useState } from "react";
+
+const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 function MaterialSelection() {
   const [materials, setMaterials] = useState({});
@@ -10,7 +12,7 @@ function MaterialSelection() {
     async function loadMaterials() {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/materials"
+          `${API_BASE}/materials`
         );
 
         if (!response.ok) {
@@ -56,7 +58,7 @@ function MaterialSelection() {
             <th>Material Code</th>
             <th>Material Name</th>
             <th>Grade</th>
-            <th>Density (kg/m³)</th>
+            <th>Density (kg/mÂ³)</th>
             <th>Price / kg (sample units)</th>
           </tr>
         </thead>
@@ -82,3 +84,5 @@ function MaterialSelection() {
 }
 
 export default MaterialSelection;
+
+

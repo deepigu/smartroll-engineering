@@ -1,4 +1,4 @@
-
+﻿
 import { useEffect, useState } from "react";
 import OrderForm from "./OrderForm";
 import MaterialSelection from "./MaterialSelection";
@@ -7,13 +7,15 @@ import CoilOptimizer from "./CoilOptimizer";
 import ProductionPlanner from "./ProductionPlanner";
 import "./App.css";
 
+const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 const menuItems = [
-  { id: "dashboard", label: "Dashboard", icon: "▦" },
-  { id: "materials", label: "Materials", icon: "◈" },
-  { id: "recommendations", label: "Recommendations", icon: "✦" },
-  { id: "coils", label: "Coil Optimization", icon: "◎" },
-  { id: "planning", label: "Production Planning", icon: "▤" },
-  { id: "orders", label: "Production Orders", icon: "▣" },
+  { id: "dashboard", label: "Dashboard", icon: "â–¦" },
+  { id: "materials", label: "Materials", icon: "â—ˆ" },
+  { id: "recommendations", label: "Recommendations", icon: "âœ¦" },
+  { id: "coils", label: "Coil Optimization", icon: "â—Ž" },
+  { id: "planning", label: "Production Planning", icon: "â–¤" },
+  { id: "orders", label: "Production Orders", icon: "â–£" },
 ];
 
 function App() {
@@ -31,7 +33,7 @@ function App() {
         setError("");
 
         const response = await fetch(
-          "http://127.0.0.1:8000/orders"
+          `${API_BASE}/orders`
         );
 
         if (!response.ok) {
@@ -126,7 +128,7 @@ function App() {
     <div className="app-layout">
       <aside className={`sidebar ${menuOpen ? "sidebar-open" : ""}`}>
         <div className="brand">
-          <div className="brand-icon">⚙</div>
+          <div className="brand-icon">âš™</div>
           <div>
             <h2>SmartRoll</h2>
             <p>Engineering Platform</p>
@@ -167,7 +169,7 @@ function App() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation"
           >
-            ☰
+            â˜°
           </button>
 
           <div>
@@ -241,7 +243,7 @@ function App() {
                     >
                       <span className="tool-icon">{item.icon}</span>
                       <strong>{item.label}</strong>
-                      <span className="tool-arrow">→</span>
+                      <span className="tool-arrow">â†’</span>
                     </button>
                   ))}
               </div>
@@ -278,3 +280,5 @@ function App() {
 }
 
 export default App;
+
+

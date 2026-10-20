@@ -1,5 +1,7 @@
-
+﻿
 import { useState } from "react";
+
+const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 function CoilOptimizer() {
   const [requiredWeight, setRequiredWeight] = useState("");
@@ -28,7 +30,7 @@ function CoilOptimizer() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/optimize-coils",
+        `${API_BASE}/optimize-coils`,
         {
           method: "POST",
           headers: {
@@ -285,3 +287,5 @@ function CoilOptimizer() {
 }
 
 export default CoilOptimizer;
+
+

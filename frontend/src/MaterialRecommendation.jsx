@@ -1,5 +1,7 @@
-
+﻿
 import { useState } from "react";
+
+const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 function MaterialRecommendation() {
   // Material requirements
@@ -27,7 +29,7 @@ function MaterialRecommendation() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/recommend-materials",
+        `${API_BASE}/recommend-materials`,
         {
           method: "POST",
           headers: {
@@ -135,7 +137,7 @@ function MaterialRecommendation() {
         {/* MAXIMUM MATERIAL DENSITY */}
         <div>
           <label htmlFor="max-density">
-            Maximum Density (kg/m³)
+            Maximum Density (kg/mÂ³)
           </label>
 
           <input
@@ -153,7 +155,7 @@ function MaterialRecommendation() {
         {/* MINIMUM YIELD STRENGTH */}
         <div>
           <label htmlFor="min-yield-strength">
-            Minimum Yield Strength (MPa) — Optional
+            Minimum Yield Strength (MPa) â€” Optional
           </label>
 
           <input
@@ -273,7 +275,7 @@ function MaterialRecommendation() {
                 <tr>
                   <th>Material</th>
                   <th>Grade</th>
-                  <th>Density (kg/m³)</th>
+                  <th>Density (kg/mÂ³)</th>
                   <th>Price/kg</th>
                   <th>Minimum Yield Strength</th>
                   <th>Tensile Strength</th>
@@ -340,3 +342,5 @@ function MaterialRecommendation() {
 }
 
 export default MaterialRecommendation;
+
+
