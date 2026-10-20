@@ -1,5 +1,5 @@
-
 from io import BytesIO
+import os
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -33,15 +33,25 @@ app = FastAPI(
 # ALLOW REACT FRONTEND CONNECTION
 # ---------------------------------------
 
+# Set FRONTEND_URL on the hosting platform to your deployed React URL.
+# Multiple URLs can be supplied as a comma-separated list.
+frontend_urls = os.getenv("FRONTEND_URL", "")
+allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+allowed_origins.extend(
+    url.strip().rstrip("/")
+    for url in frontend_urls.split(",")
+    if url.strip()
+)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173"
-    ],
+    allow_origins=allowed_origins,
     allow_credentials=False,
     allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type"]
+    allow_headers=["Content-Type"],
 )
 
 
